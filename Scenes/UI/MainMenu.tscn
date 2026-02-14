@@ -1,0 +1,161 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenuController.cs" id="1_menu"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.06, 0.08, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuVBox" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Center/MenuVBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Overton"
+
+[node name="NewCampaignButton" type="Button" parent="Center/MenuVBox"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "New Campaign"
+
+[node name="LoadCampaignButton" type="Button" parent="Center/MenuVBox"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "Load Campaign"
+
+[node name="SettingsButton" type="Button" parent="Center/MenuVBox"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitGameButton" type="Button" parent="Center/MenuVBox"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+text = "Exit Game"
+
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -52.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Credits"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(420, 160)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -80.0
+offset_right = 210.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="SettingsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="SettingsPanel/Margin/VBox"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Body" type="Label" parent="SettingsPanel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Settings coming soon."
+
+[node name="CloseButton" type="Button" parent="SettingsPanel/Margin/VBox"]
+layout_mode = 2
+text = "Close"
+
+[node name="CreditsPanel" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(460, 190)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -95.0
+offset_right = 230.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="CreditsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CreditsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="CreditsPanel/Margin/VBox"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Body" type="Label" parent="CreditsPanel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Overton\nCreated by the Overton development team."
+
+[node name="CloseButton" type="Button" parent="CreditsPanel/Margin/VBox"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="Center/MenuVBox/NewCampaignButton" to="." method="OnNewCampaignPressed"]
+[connection signal="pressed" from="Center/MenuVBox/LoadCampaignButton" to="." method="OnLoadCampaignPressed"]
+[connection signal="pressed" from="Center/MenuVBox/SettingsButton" to="." method="OnSettingsPressed"]
+[connection signal="pressed" from="Center/MenuVBox/ExitGameButton" to="." method="OnExitGamePressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="OnCreditsPressed"]
+[connection signal="pressed" from="SettingsPanel/Margin/VBox/CloseButton" to="." method="OnSettingsClosePressed"]
+[connection signal="pressed" from="CreditsPanel/Margin/VBox/CloseButton" to="." method="OnCreditsClosePressed"]

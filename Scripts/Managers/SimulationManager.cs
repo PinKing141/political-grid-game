@@ -142,6 +142,12 @@ public partial class SimulationManager : Node
         InitializeCandidateData();
         InitializeGrid();
 
+        if (SessionLaunchContext.TryConsumeLoadCampaignPath(out string pendingLoadPath))
+        {
+            LoadGame(string.IsNullOrWhiteSpace(pendingLoadPath) ? "user://savegame.json" : pendingLoadPath);
+            return;
+        }
+
         if (AutoStart)
         {
             BeginGame();

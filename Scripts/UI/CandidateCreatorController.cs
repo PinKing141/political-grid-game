@@ -48,6 +48,17 @@ public partial class CandidateCreatorController : Control
         _hudRoot = ResolveNodeOrWarn<CanvasItem>(HudRootPath, nameof(HudRootPath));
         _worldView = ResolveNodeOrWarn<CanvasItem>(WorldViewPath, nameof(WorldViewPath));
 
+        if (_simulationManager != null && _simulationManager.HasStarted)
+        {
+            if (_hudRoot != null)
+            {
+                _hudRoot.Visible = true;
+            }
+
+            QueueFree();
+            return;
+        }
+
         if (_hudRoot != null)
         {
             _hudRoot.Visible = false;
