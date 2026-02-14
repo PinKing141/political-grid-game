@@ -348,6 +348,8 @@ public partial class HudController : CanvasLayer
             return;
         }
 
+        _tickTimer?.Stop();
+
         bool ok = _simulationManager.LoadGame();
         if (!ok)
         {
@@ -366,6 +368,7 @@ public partial class HudController : CanvasLayer
         RefreshCandidateSummary();
         RefreshInspector();
         RefreshDashboard();
+        SyncGameOverOverlay();
         _heatmapView?.Refresh();
         ShowPersistenceStatus(true, _simulationManager.LastPersistenceStatus);
     }
@@ -1414,6 +1417,32 @@ public partial class HudController : CanvasLayer
         }
 
         _gameOverPanel.Visible = true;
+    }
+
+    private void SyncGameOverOverlay()
+    {
+        if (_simulationManager == null || _gameOverPanel == null)
+        {
+            return;
+        }
+
+        if (_simulationManager.IsGameOver)
+        {
+            if (_gameOverTitle != null)
+            {
+                _gameOverTitle.Text = _simulationManager.GameOverReason;
+            }
+
+            if (_gameOverBody != null)
+            {
+                _gameOverBody.Text = _simulationManager.GameOverDetail;
+            }
+
+            _gameOverPanel.Visible = true;
+            return;
+        }
+
+        _gameOverPanel.Visible = false;
     }
 
     private string BuildPolicyContributionBreakdown(BlocCategory category, bool turnout)
