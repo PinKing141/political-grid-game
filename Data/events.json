@@ -1,0 +1,168 @@
+{
+  "events": [
+    {
+      "title": "Market Crash",
+      "description": "A sudden downturn increases demand for intervention and political certainty.",
+      "voterShift": {
+        "economic": -0.20,
+        "societal": -0.03,
+        "authority": 0.08,
+        "diplomatic": -0.02
+      },
+      "stabilityImpact": -12.0,
+      "weight": 1.0,
+      "tagEffects": [
+        {
+          "tag": "economy_recession",
+          "durationTurns": 12
+        }
+      ]
+    },
+    {
+      "title": "Corruption Scandal",
+      "description": "Leaked documents trigger broad anger and distrust in institutions.",
+      "voterShift": {
+        "economic": -0.05,
+        "societal": 0.06,
+        "authority": -0.12,
+        "diplomatic": 0.00
+      },
+      "stabilityImpact": -10.0,
+      "weight": 0.8
+    },
+    {
+      "title": "Tech Boom",
+      "description": "High-growth sectors expand and urban optimism rises.",
+      "voterShift": {
+        "economic": 0.14,
+        "societal": 0.07,
+        "authority": -0.05,
+        "diplomatic": 0.10
+      },
+      "stabilityImpact": 7.0,
+      "weight": 0.7,
+      "weightRules": [
+        {
+          "forbidTag": "economy_recession",
+          "weightMultiplier": 1.0,
+          "weightAdd": 0.4
+        },
+        {
+          "requireTag": "economy_recession",
+          "weightMultiplier": 0.4
+        }
+      ]
+    },
+    {
+      "title": "Border Crisis",
+      "description": "Tensions around migration and security dominate public debate.",
+      "voterShift": {
+        "economic": -0.02,
+        "societal": -0.06,
+        "authority": 0.14,
+        "diplomatic": -0.18
+      },
+      "stabilityImpact": -8.0,
+      "weight": 0.9
+    },
+    {
+      "title": "Civil Rights Wave",
+      "description": "Grassroots organizing boosts social mobilization and progressive demands.",
+      "voterShift": {
+        "economic": -0.04,
+        "societal": 0.18,
+        "authority": -0.10,
+        "diplomatic": 0.06
+      },
+      "stabilityImpact": 4.0,
+      "weight": 0.6
+    },
+    {
+      "title": "Energy Shock",
+      "description": "Rising prices trigger concern about sovereignty and cost of living.",
+      "voterShift": {
+        "economic": -0.10,
+        "societal": -0.02,
+        "authority": 0.06,
+        "diplomatic": -0.12
+      },
+      "stabilityImpact": -6.0,
+      "weight": 0.75
+    },
+    {
+      "title": "General Strike",
+      "description": "Unions coordinate nationwide action, disrupting transport and production.",
+      "voterShift": {
+        "economic": -0.08,
+        "societal": 0.05,
+        "authority": -0.06,
+        "diplomatic": 0.00
+      },
+      "stabilityImpact": -14.0,
+      "weight": 0.0,
+      "weightRules": [
+        {
+          "requireTag": "economy_recession",
+          "minUnrest": 70.0,
+          "weightAdd": 5.0
+        }
+      ],
+      "tagEffects": [
+        {
+          "tag": "labor_unrest",
+          "durationTurns": 6
+        }
+      ]
+    },
+    {
+      "title": "Austerity Riots",
+      "description": "Cuts and inflation trigger violent clashes in major cities.",
+      "voterShift": {
+        "economic": -0.14,
+        "societal": 0.00,
+        "authority": 0.12,
+        "diplomatic": -0.02
+      },
+      "stabilityImpact": -16.0,
+      "weight": 0.0,
+      "weightRules": [
+        {
+          "requireTag": "economy_recession",
+          "minUnrest": 60.0,
+          "weightAdd": 4.5
+        }
+      ],
+      "tagEffects": [
+        {
+          "tag": "riot_wave",
+          "durationTurns": 5
+        }
+      ]
+    },
+    {
+      "title": "Capital Flight",
+      "description": "Investors pull out abruptly, freezing credit and shrinking tax intake.",
+      "voterShift": {
+        "economic": 0.10,
+        "societal": -0.03,
+        "authority": 0.03,
+        "diplomatic": -0.06
+      },
+      "stabilityImpact": -9.0,
+      "weight": 0.0,
+      "weightRules": [
+        {
+          "requireTag": "economy_recession",
+          "maxStability": 55.0,
+          "weightAdd": 3.8
+        }
+      ],
+      "tagEffects": [
+        {
+          "tag": "capital_flight",
+          "durationTurns": 8
+        }
+      ]
+    }
+  ]
+}

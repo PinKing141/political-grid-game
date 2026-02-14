@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/CandidateCreatorController.cs" id="1_creator"]
+
+[node name="CandidateCreator" type="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_creator")
+SimulationManagerPath = NodePath("../SimulationManager")
+CandidateNamePath = NodePath("Center/Panel/Margin/VBox/CandidateName")
+BackgroundOptionPath = NodePath("Center/Panel/Margin/VBox/BackgroundOption")
+TraitPrimaryOptionPath = NodePath("Center/Panel/Margin/VBox/TraitPrimaryOption")
+TraitSecondaryOptionPath = NodePath("Center/Panel/Margin/VBox/TraitSecondaryOption")
+BackgroundDescriptionPath = NodePath("Center/Panel/Margin/VBox/BackgroundDescription")
+TraitPrimaryDescriptionPath = NodePath("Center/Panel/Margin/VBox/TraitPrimaryDescription")
+TraitSecondaryDescriptionPath = NodePath("Center/Panel/Margin/VBox/TraitSecondaryDescription")
+SummaryPath = NodePath("Center/Panel/Margin/VBox/Summary")
+HudRootPath = NodePath("../HUD")
+WorldViewPath = NodePath("../WorldView")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(640, 520)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Create Your Candidate"
+
+[node name="SubTitle" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Choose a background and traits before starting your first turn."
+
+[node name="CandidateName" type="LineEdit" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+placeholder_text = "Candidate Name"
+
+[node name="BackgroundOption" type="OptionButton" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="BackgroundDescription" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Background:"
+
+[node name="TraitPrimaryOption" type="OptionButton" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="TraitPrimaryDescription" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Primary Trait:"
+
+[node name="TraitSecondaryOption" type="OptionButton" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+
+[node name="TraitSecondaryDescription" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Secondary Trait:"
+
+[node name="Summary" type="RichTextLabel" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+fit_content = false
+autowrap_mode = 2
+bbcode_enabled = true
+scroll_active = false
+text = "Summary"
+
+[node name="StartButton" type="Button" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Start Campaign"
+
+[connection signal="text_changed" from="Center/Panel/Margin/VBox/CandidateName" to="." method="OnNameChanged"]
+[connection signal="item_selected" from="Center/Panel/Margin/VBox/BackgroundOption" to="." method="OnBackgroundSelected"]
+[connection signal="item_selected" from="Center/Panel/Margin/VBox/TraitPrimaryOption" to="." method="OnPrimaryTraitSelected"]
+[connection signal="item_selected" from="Center/Panel/Margin/VBox/TraitSecondaryOption" to="." method="OnSecondaryTraitSelected"]
+[connection signal="pressed" from="Center/Panel/Margin/VBox/StartButton" to="." method="OnStartPressed"]

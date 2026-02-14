@@ -1,0 +1,49 @@
+{
+  "traits": [
+    {
+      "id": "grassroots",
+      "name": "Grassroots Organizer",
+      "description": "Strong local mobilization and volunteer network.",
+      "charismaDelta": 0.08,
+      "campaignStrengthMultiplierDelta": 0.12,
+      "pollingBonusDelta": 0.01
+    },
+    {
+      "id": "policy_wonk",
+      "name": "Policy Wonk",
+      "description": "Technocratic planner with efficient governance instincts.",
+      "competenceDelta": 0.12,
+      "policyCostMultiplierDelta": -0.08,
+      "capitalGainMultiplierDelta": 0.08,
+      "debtStressMitigationDelta": 0.06
+    },
+    {
+      "id": "media_savvy",
+      "name": "Media Savvy",
+      "description": "Strong in televised communication and message control.",
+      "charismaDelta": 0.06,
+      "campaignStrengthMultiplierDelta": 0.1,
+      "pollingBonusDelta": 0.02,
+      "propagandaCostMultiplierDelta": -0.05
+    },
+    {
+      "id": "firebrand",
+      "name": "Firebrand",
+      "description": "Polarizing populist rhetoric; high energy, higher volatility.",
+      "populismDelta": 0.18,
+      "charismaDelta": 0.05,
+      "integrityDelta": -0.07,
+      "campaignStrengthMultiplierDelta": 0.08,
+      "eventShockMultiplierDelta": 0.06
+    },
+    {
+      "id": "clean_hands",
+      "name": "Clean Hands",
+      "description": "Reputation for honesty and fiscal discipline.",
+      "integrityDelta": 0.16,
+      "policyCostMultiplierDelta": -0.03,
+      "debtStressMitigationDelta": 0.08,
+      "eventShockMultiplierDelta": -0.05
+    }
+  ]
+}

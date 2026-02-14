@@ -1,0 +1,51 @@
+{
+  "policies": [
+    {
+      "name": "Universal Healthcare",
+      "capitalCost": 6,
+      "effects": {
+        "policy.shift.economic": -0.08,
+        "national.stability.offset": 2.0,
+        "economy.treasury.per_tick": -55.0,
+        "bloc.happiness.Workers": 0.08,
+        "bloc.happiness.Retirees": 0.10,
+        "bloc.happiness.Students": 0.03,
+        "bloc.happiness.Business": -0.02,
+        "bloc.turnout.Workers": 0.02,
+        "bloc.turnout.Retirees": 0.01
+      }
+    },
+    {
+      "name": "Strict Policing",
+      "capitalCost": 5,
+      "effects": {
+        "policy.shift.authority": 0.10,
+        "national.stability.offset": 2.5,
+        "national.turnout.offset": -0.02,
+        "economy.treasury.per_tick": -35.0,
+        "bloc.happiness.Retirees": 0.05,
+        "bloc.happiness.Business": 0.03,
+        "bloc.happiness.Students": -0.10,
+        "bloc.happiness.Workers": -0.03,
+        "bloc.turnout.Students": -0.05
+      }
+    },
+    {
+      "name": "Open Borders",
+      "capitalCost": 4,
+      "effects": {
+        "policy.shift.diplomatic": 0.12,
+        "policy.shift.societal": 0.04,
+        "national.stability.offset": -1.5,
+        "economy.treasury.per_tick": 22.0,
+        "bloc.happiness.Professionals": 0.08,
+        "bloc.happiness.Students": 0.06,
+        "bloc.happiness.Business": 0.03,
+        "bloc.happiness.Farmers": -0.04,
+        "bloc.happiness.Retirees": -0.05,
+        "bloc.turnout.Professionals": 0.02,
+        "bloc.turnout.Farmers": -0.01
+      }
+    }
+  ]
+}

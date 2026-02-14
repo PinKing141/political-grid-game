@@ -1,0 +1,43 @@
+{
+  "backgrounds": [
+    {
+      "id": "union_lawyer",
+      "name": "Union Lawyer",
+      "description": "Veteran negotiator with strong labor ties.",
+      "charismaDelta": 0.04,
+      "competenceDelta": 0.08,
+      "integrityDelta": 0.05,
+      "policyCostMultiplierDelta": -0.04,
+      "capitalGainMultiplierDelta": 0.05
+    },
+    {
+      "id": "business_exec",
+      "name": "Business Executive",
+      "description": "Managerial leadership with elite financing access.",
+      "competenceDelta": 0.1,
+      "populismDelta": -0.06,
+      "debtStressMitigationDelta": 0.1,
+      "eventShockMultiplierDelta": -0.03
+    },
+    {
+      "id": "activist",
+      "name": "Street Activist",
+      "description": "Movement-born campaigner with high ground energy.",
+      "charismaDelta": 0.1,
+      "populismDelta": 0.08,
+      "campaignStrengthMultiplierDelta": 0.1,
+      "pollingBonusDelta": 0.01,
+      "capitalGainMultiplierDelta": -0.04
+    },
+    {
+      "id": "military_officer",
+      "name": "Military Officer",
+      "description": "Command background with crisis management reputation.",
+      "competenceDelta": 0.08,
+      "integrityDelta": 0.05,
+      "propagandaCostMultiplierDelta": -0.03,
+      "debtStressMitigationDelta": 0.05,
+      "eventShockMultiplierDelta": -0.04
+    }
+  ]
+}

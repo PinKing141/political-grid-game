@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Managers/SimulationManager.cs" id="1_sim"]
+[ext_resource type="PackedScene" path="res://Scenes/World/WorldView.tscn" id="2_world"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/CandidateCreator.tscn" id="4_candidate_creator"]
+
+[node name="Main" type="Node"]
+
+[node name="SimulationManager" type="Node" parent="."]
+script = ExtResource("1_sim")
+AutoStart = false
+
+[node name="WorldView" parent="." instance=ExtResource("2_world")]
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="CandidateCreator" parent="." instance=ExtResource("4_candidate_creator")]

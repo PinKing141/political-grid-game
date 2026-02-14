@@ -1,0 +1,478 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/HudController.cs" id="1_hud"]
+[ext_resource type="Script" path="res://Scripts/UI/HistoryChart.cs" id="2_chart"]
+[ext_resource type="Script" path="res://Scripts/UI/DraggablePanel.cs" id="3_drag"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+SimulationManagerPath = NodePath("../SimulationManager")
+HeatmapPath = NodePath("../WorldView")
+TurnLabelPath = NodePath("Panel/Margin/VBox/Stats/TurnLabel")
+StabilityLabelPath = NodePath("Panel/Margin/VBox/Stats/StabilityLabel")
+TurnoutLabelPath = NodePath("Panel/Margin/VBox/Stats/TurnoutLabel")
+EventLabelPath = NodePath("Panel/Margin/VBox/Stats/EventLabel")
+GovernmentLabelPath = NodePath("Panel/Margin/VBox/Stats/GovernmentLabel")
+TreasuryLabelPath = NodePath("Panel/Margin/VBox/Stats/TreasuryLabel")
+CapitalLabelPath = NodePath("Panel/Margin/VBox/Stats/CapitalLabel")
+ProjectedPollsLabelPath = NodePath("Panel/Margin/VBox/Stats/ProjectedPollsLabel")
+FactionSummaryPath = NodePath("Panel/Margin/VBox/Stats/FactionSummary")
+TurnDigestLabelPath = NodePath("Panel/Margin/VBox/Stats/TurnDigestLabel")
+ActionHistoryLabelPath = NodePath("Panel/Margin/VBox/Stats/ActionHistoryLabel")
+UnionStrikeDealButtonPath = NodePath("Panel/Margin/VBox/Controls/FactionActions/UnionStrikeDealButton")
+MilitaryAppeasementButtonPath = NodePath("Panel/Margin/VBox/Controls/FactionActions/MilitaryAppeasementButton")
+YouthReformButtonPath = NodePath("Panel/Margin/VBox/Controls/FactionActions/YouthReformButton")
+ServicesBudgetSliderPath = NodePath("Panel/Margin/VBox/Budget/ServicesSlider")
+MilitaryBudgetSliderPath = NodePath("Panel/Margin/VBox/Budget/MilitarySlider")
+InfrastructureBudgetSliderPath = NodePath("Panel/Margin/VBox/Budget/InfrastructureSlider")
+CandidateNameInputPath = NodePath("Panel/Margin/VBox/Candidate/CandidateName")
+CandidateBackgroundOptionPath = NodePath("Panel/Margin/VBox/Candidate/BackgroundOption")
+CandidateTraitPrimaryOptionPath = NodePath("Panel/Margin/VBox/Candidate/TraitPrimaryOption")
+CandidateTraitSecondaryOptionPath = NodePath("Panel/Margin/VBox/Candidate/TraitSecondaryOption")
+CandidateSummaryLabelPath = NodePath("Panel/Margin/VBox/Candidate/CandidateSummary")
+HealthcareTogglePath = NodePath("Panel/Margin/VBox/Policies/HealthcareToggle")
+PolicingTogglePath = NodePath("Panel/Margin/VBox/Policies/PolicingToggle")
+BordersTogglePath = NodePath("Panel/Margin/VBox/Policies/BordersToggle")
+PolicyRampLabelPath = NodePath("Panel/Margin/VBox/Policies/PolicyRampLabel")
+InspectorTitlePath = NodePath("InspectorPanel/Margin/InspectorVBox/InspectorTitle")
+InspectorSummaryPath = NodePath("InspectorPanel/Margin/InspectorVBox/InspectorSummary")
+InspectorBlocsPath = NodePath("InspectorPanel/Margin/InspectorVBox/InspectorBlocs")
+DashboardChartPath = NodePath("DashboardPanel/Margin/VBox/DashboardChart")
+DashboardHoverLabelPath = NodePath("DashboardPanel/Margin/VBox/DashboardHoverLabel")
+ModeOptionPath = NodePath("Panel/Margin/VBox/Controls/ModeOption")
+TileSizeModeTogglePath = NodePath("Panel/Margin/VBox/Controls/TileSizeModeToggle")
+EventPopupPanelPath = NodePath("EventPopup")
+EventPopupTitlePath = NodePath("EventPopup/Margin/VBox/EventPopupTitle")
+EventPopupBodyPath = NodePath("EventPopup/Margin/VBox/EventPopupBody")
+GameOverPanelPath = NodePath("GameOverOverlay")
+GameOverTitlePath = NodePath("GameOverOverlay/Center/Panel/Margin/VBox/GameOverTitle")
+GameOverBodyPath = NodePath("GameOverOverlay/Center/Panel/Margin/VBox/GameOverBody")
+
+[node name="Panel" type="PanelContainer" parent="."]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 340.0
+offset_bottom = 272.0
+script = ExtResource("3_drag")
+LayoutId = "main_panel"
+
+[node name="InspectorPanel" type="PanelContainer" parent="."]
+offset_left = 360.0
+offset_top = 12.0
+offset_right = 760.0
+offset_bottom = 420.0
+script = ExtResource("3_drag")
+LayoutId = "inspector_panel"
+
+[node name="DashboardPanel" type="PanelContainer" parent="."]
+offset_left = 12.0
+offset_top = 290.0
+offset_right = 340.0
+offset_bottom = 520.0
+script = ExtResource("3_drag")
+LayoutId = "dashboard_panel"
+
+[node name="Margin" type="MarginContainer" parent="DashboardPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="DashboardPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="DashboardTitle" type="Label" parent="DashboardPanel/Margin/VBox"]
+layout_mode = 2
+text = "National Trends (Last 50)"
+
+[node name="DashboardLegend" type="RichTextLabel" parent="DashboardPanel/Margin/VBox"]
+layout_mode = 2
+fit_content = false
+autowrap_mode = 2
+scroll_active = false
+bbcode_enabled = true
+text = "[color=#52DB77]Stability[/color]  [color=#59B7F0]Turnout[/color]  [color=#F0C747]Treasury[/color]  [color=#C773ED]Capital[/color]"
+
+[node name="DashboardHoverLabel" type="Label" parent="DashboardPanel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Hover chart for turn values"
+
+[node name="DashboardChart" type="Control" parent="DashboardPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_chart")
+
+[node name="Margin" type="MarginContainer" parent="InspectorPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="InspectorVBox" type="VBoxContainer" parent="InspectorPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="InspectorTitle" type="Label" parent="InspectorPanel/Margin/InspectorVBox"]
+layout_mode = 2
+text = "Tile Inspector"
+
+[node name="InspectorSummary" type="Label" parent="InspectorPanel/Margin/InspectorVBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Click a tile on the grid to inspect local demographics and sentiment."
+
+[node name="InspectorBlocs" type="RichTextLabel" parent="InspectorPanel/Margin/InspectorVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_horizontal = 3
+autowrap_mode = 2
+bbcode_enabled = true
+scroll_active = true
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Stats" type="VBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TurnLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+text = "Turn: 0"
+
+[node name="StabilityLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+text = "Stability: 0"
+
+[node name="TurnoutLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+text = "Turnout: 0%"
+
+[node name="EventLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Event: None"
+
+[node name="GovernmentLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Government: Caretaker Coalition"
+
+[node name="TreasuryLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+text = "Treasury: 0"
+
+[node name="CapitalLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+text = "Capital: 0"
+
+[node name="ProjectedPollsLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Projected Polls: N/A"
+
+[node name="FactionHeader" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+text = "Factions"
+
+[node name="FactionSummary" type="RichTextLabel" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 84)
+autowrap_mode = 2
+bbcode_enabled = true
+fit_content = false
+scroll_active = false
+text = "Factions: N/A"
+
+[node name="TurnDigestLabel" type="Label" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Last Turn: No completed turns yet."
+
+[node name="ActionHistoryLabel" type="RichTextLabel" parent="Panel/Margin/VBox/Stats"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 64)
+autowrap_mode = 2
+bbcode_enabled = true
+fit_content = false
+scroll_active = false
+text = "No recent actions."
+
+[node name="Policies" type="VBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PoliciesHeader" type="Label" parent="Panel/Margin/VBox/Policies"]
+layout_mode = 2
+text = "Policies"
+
+[node name="HealthcareToggle" type="CheckButton" parent="Panel/Margin/VBox/Policies"]
+layout_mode = 2
+text = "Universal Healthcare"
+
+[node name="PolicingToggle" type="CheckButton" parent="Panel/Margin/VBox/Policies"]
+layout_mode = 2
+text = "Strict Policing"
+
+[node name="BordersToggle" type="CheckButton" parent="Panel/Margin/VBox/Policies"]
+layout_mode = 2
+text = "Open Borders"
+
+[node name="PolicyRampLabel" type="RichTextLabel" parent="Panel/Margin/VBox/Policies"]
+layout_mode = 2
+autowrap_mode = 2
+bbcode_enabled = true
+fit_content = false
+scroll_active = false
+text = "[color=#9DA7B3]Healthcare 0%[/color]\n[color=#9DA7B3]Policing 0%[/color]\n[color=#9DA7B3]Borders 0%[/color]"
+
+[node name="Budget" type="VBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BudgetHeader" type="Label" parent="Panel/Margin/VBox/Budget"]
+layout_mode = 2
+text = "Budget Allocation"
+
+[node name="ServicesLabel" type="Label" parent="Panel/Margin/VBox/Budget"]
+layout_mode = 2
+text = "Services"
+
+[node name="ServicesSlider" type="HSlider" parent="Panel/Margin/VBox/Budget"]
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+value = 50.0
+
+[node name="MilitaryLabel" type="Label" parent="Panel/Margin/VBox/Budget"]
+layout_mode = 2
+text = "Military"
+
+[node name="MilitarySlider" type="HSlider" parent="Panel/Margin/VBox/Budget"]
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+value = 50.0
+
+[node name="InfrastructureLabel" type="Label" parent="Panel/Margin/VBox/Budget"]
+layout_mode = 2
+text = "Infrastructure"
+
+[node name="InfrastructureSlider" type="HSlider" parent="Panel/Margin/VBox/Budget"]
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+value = 50.0
+
+[node name="Candidate" type="VBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="CandidateHeader" type="Label" parent="Panel/Margin/VBox/Candidate"]
+layout_mode = 2
+text = "Candidate"
+
+[node name="CandidateName" type="LineEdit" parent="Panel/Margin/VBox/Candidate"]
+layout_mode = 2
+placeholder_text = "Candidate Name"
+
+[node name="BackgroundOption" type="OptionButton" parent="Panel/Margin/VBox/Candidate"]
+layout_mode = 2
+
+[node name="TraitPrimaryOption" type="OptionButton" parent="Panel/Margin/VBox/Candidate"]
+layout_mode = 2
+
+[node name="TraitSecondaryOption" type="OptionButton" parent="Panel/Margin/VBox/Candidate"]
+layout_mode = 2
+
+[node name="ApplyCandidateButton" type="Button" parent="Panel/Margin/VBox/Candidate"]
+layout_mode = 2
+text = "Apply Candidate"
+
+[node name="CandidateSummary" type="RichTextLabel" parent="Panel/Margin/VBox/Candidate"]
+layout_mode = 2
+fit_content = false
+autowrap_mode = 2
+bbcode_enabled = true
+scroll_active = false
+text = "Candidate: N/A"
+
+[node name="Controls" type="VBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ModeOption" type="OptionButton" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+
+[node name="TileSizeModeToggle" type="CheckButton" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+button_pressed = true
+text = "Fixed Tile Size"
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PauseButton" type="Button" parent="Panel/Margin/VBox/Controls/Buttons"]
+layout_mode = 2
+text = "Pause"
+
+[node name="PlayButton" type="Button" parent="Panel/Margin/VBox/Controls/Buttons"]
+layout_mode = 2
+text = "Play"
+
+[node name="FastButton" type="Button" parent="Panel/Margin/VBox/Controls/Buttons"]
+layout_mode = 2
+text = "Fast"
+
+[node name="NextTurnButton" type="Button" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+text = "Next Turn"
+
+[node name="ResetLayoutButton" type="Button" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+text = "Reset Layout"
+
+[node name="PersistenceButtons" type="HBoxContainer" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SaveButton" type="Button" parent="Panel/Margin/VBox/Controls/PersistenceButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="Panel/Margin/VBox/Controls/PersistenceButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load"
+
+[node name="PropagandaButton" type="Button" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+text = "Propaganda Campaign"
+
+[node name="FactionActions" type="VBoxContainer" parent="Panel/Margin/VBox/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="FactionActionsHeader" type="Label" parent="Panel/Margin/VBox/Controls/FactionActions"]
+layout_mode = 2
+text = "Faction Actions"
+
+[node name="UnionStrikeDealButton" type="Button" parent="Panel/Margin/VBox/Controls/FactionActions"]
+layout_mode = 2
+text = "Union Strike Deal"
+
+[node name="MilitaryAppeasementButton" type="Button" parent="Panel/Margin/VBox/Controls/FactionActions"]
+layout_mode = 2
+text = "Military Appeasement"
+
+[node name="YouthReformButton" type="Button" parent="Panel/Margin/VBox/Controls/FactionActions"]
+layout_mode = 2
+text = "Youth Reform Package"
+
+[node name="EventPopup" type="PanelContainer" parent="."]
+visible = false
+offset_left = 430.0
+offset_top = 14.0
+offset_right = 860.0
+offset_bottom = 120.0
+
+[node name="Margin" type="MarginContainer" parent="EventPopup"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="EventPopup/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="EventPopupTitle" type="Label" parent="EventPopup/Margin/VBox"]
+layout_mode = 2
+text = "Event"
+
+[node name="EventPopupBody" type="Label" parent="EventPopup/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Event details"
+
+[node name="GameOverOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Center" type="CenterContainer" parent="GameOverOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="GameOverOverlay/Center"]
+custom_minimum_size = Vector2(520, 180)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="GameOverOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="GameOverOverlay/Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GameOverTitle" type="Label" parent="GameOverOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Game Over"
+
+[node name="GameOverBody" type="Label" parent="GameOverOverlay/Center/Panel/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Your administration has collapsed."
+
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/Buttons/PauseButton" to="." method="OnPausePressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/Buttons/PlayButton" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/Buttons/FastButton" to="." method="OnFastPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/NextTurnButton" to="." method="OnNextTurnPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/ResetLayoutButton" to="." method="OnResetLayoutPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/PersistenceButtons/SaveButton" to="." method="OnSavePressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/PersistenceButtons/LoadButton" to="." method="OnLoadPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/PropagandaButton" to="." method="OnPropagandaPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/FactionActions/UnionStrikeDealButton" to="." method="OnUnionStrikeDealPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/FactionActions/MilitaryAppeasementButton" to="." method="OnMilitaryAppeasementPressed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Controls/FactionActions/YouthReformButton" to="." method="OnYouthReformPackagePressed"]
+[connection signal="toggled" from="Panel/Margin/VBox/Policies/HealthcareToggle" to="." method="OnHealthcareToggled"]
+[connection signal="toggled" from="Panel/Margin/VBox/Policies/PolicingToggle" to="." method="OnPolicingToggled"]
+[connection signal="toggled" from="Panel/Margin/VBox/Policies/BordersToggle" to="." method="OnBordersToggled"]
+[connection signal="value_changed" from="Panel/Margin/VBox/Budget/ServicesSlider" to="." method="OnServicesBudgetChanged"]
+[connection signal="value_changed" from="Panel/Margin/VBox/Budget/MilitarySlider" to="." method="OnMilitaryBudgetChanged"]
+[connection signal="value_changed" from="Panel/Margin/VBox/Budget/InfrastructureSlider" to="." method="OnInfrastructureBudgetChanged"]
+[connection signal="text_changed" from="Panel/Margin/VBox/Candidate/CandidateName" to="." method="OnCandidateNameChanged"]
+[connection signal="item_selected" from="Panel/Margin/VBox/Candidate/BackgroundOption" to="." method="OnCandidateBackgroundSelected"]
+[connection signal="item_selected" from="Panel/Margin/VBox/Candidate/TraitPrimaryOption" to="." method="OnCandidateTraitPrimarySelected"]
+[connection signal="item_selected" from="Panel/Margin/VBox/Candidate/TraitSecondaryOption" to="." method="OnCandidateTraitSecondarySelected"]
+[connection signal="pressed" from="Panel/Margin/VBox/Candidate/ApplyCandidateButton" to="." method="OnCandidateApplyPressed"]
+[connection signal="toggled" from="Panel/Margin/VBox/Controls/TileSizeModeToggle" to="." method="OnTileSizeModeToggled"]

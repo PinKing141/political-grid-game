@@ -1,0 +1,37 @@
+{
+  "parties": [
+    {
+      "name": "SocDem",
+      "color": "#d94747",
+      "platform": {
+        "economic": -0.60,
+        "societal": 0.35,
+        "authority": -0.25,
+        "diplomatic": 0.35
+      },
+      "opportunism": 0.60
+    },
+    {
+      "name": "Conservative",
+      "color": "#385fcc",
+      "platform": {
+        "economic": 0.40,
+        "societal": -0.55,
+        "authority": 0.40,
+        "diplomatic": -0.30
+      },
+      "opportunism": 0.45
+    },
+    {
+      "name": "Liberal",
+      "color": "#f2cc38",
+      "platform": {
+        "economic": 0.25,
+        "societal": 0.55,
+        "authority": -0.35,
+        "diplomatic": 0.55
+      },
+      "opportunism": 0.70
+    }
+  ]
+}
